@@ -1,3 +1,11 @@
+<?php
+include "koneksi.php";
+
+$query = "SELECT * FROM mahasiswa";
+$data = ambildata($query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,18 +23,21 @@
             <th>No</th>
             <th>NIM</th>
             <th>Nama</th>
+            <th>Telp</th>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>E123123</td>
-                <td>Asep</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>E123124</td>
-                <td>Anang</td>
-            </tr>
+
+            <?php
+            $i = 1;
+            foreach ($data as $d) : ?>
+                <tr>
+                    <td><?php echo $i++; ?></td>
+                    <td><?php echo $d["nim"] ?></td>
+                    <td><?php echo $d["nama"] ?></td>
+                    <td><?php echo $d["telp"] ?></td>
+                </tr>
+            <?php endforeach; ?>
+
         </tbody>
     </table>
 </body>
